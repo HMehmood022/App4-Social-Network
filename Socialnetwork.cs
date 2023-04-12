@@ -120,7 +120,7 @@ namespace SocialNetwork //namespace used to organise code elements.
             for (int index = 0; index < Usersmax; index++)
             {
                 Console.WriteLine(" ------------------------------------------------ ");
-                Console.WriteLine(" Please enter the message details for " + Users[index] + " : ");
+                Console.WriteLine(" Please enter the message post details for " + Users[index] + " : ");
                 Console.WriteLine(" ------------------------------------------------ ");
                 Posts[index] = Console.ReadLine(); //stores input in Post array
             }
@@ -159,11 +159,10 @@ namespace SocialNetwork //namespace used to organise code elements.
             for (int index = 0; index < Usersmax; index++)
             {
                 Console.WriteLine(" ------------------------------------------------ ");
-                Console.WriteLine(" Please enter the image name: " + Images[index]); //the user is asked to input an image name.
+                Console.WriteLine(" Please enter the image name " + Images[index] + " : "); //the user is asked to input an image name.
                 Console.WriteLine(" ------------------------------------------------ ");
                 Images[index] = Console.ReadLine();
 
-                SelectChoice(); //returns the user back to the menu
             }
 
             for(int index = 0; index < Usersmax; index++)
@@ -173,19 +172,36 @@ namespace SocialNetwork //namespace used to organise code elements.
                 Console.WriteLine(" ------------------------------------------------ ");
                 Captions[index] = Console.ReadLine();
 
-                SelectChoice(); //returns the user back to the menu
+                
             }
+
+            for(int index = 0; index < Usersmax; index++)
+            {
+                int imageLikes;
+
+                Console.WriteLine(" ------------------------------------------------ ");
+                Console.WriteLine(" Please enter the amount of likes for " + Images[index]);
+                Console.WriteLine(" ------------------------------------------------ ");
+                imageLikes = Convert.ToInt32(Console.ReadLine());
+
+                Imagelikes[index] = imageLikes;
+            }
+
+            SelectChoice(); //returns the user back to the menu
         }
 
         public static void ListImagePosts() //this is our 
         {
-            for(int index = 0; index < Usersmax; index++)
+            Console.WriteLine(" ------------------------------------------------ ");
+            Console.WriteLine(" Here is a list of image posts ");
+            Console.WriteLine(" ------------------------------------------------ ");
+
+            for (int index = 0; index < Usersmax; index++)
             {
-                Console.WriteLine(" ------------------------------------------------ ");
-                Console.WriteLine(" Here is a list of image posts ");
-                Console.WriteLine(" ------------------------------------------------ ");
                 Console.WriteLine(" User " + Users[index] + " has posted " + Images[index] + ".PNG" + " and recieved: " + Imagelikes[index] + " likes "); //this will output the following; User *username* has posted *imagename*.PNG and recieved *amount* Likes
             }
+
+            SelectChoice();
         }
 
         public static void Quit() //this is our quit method
